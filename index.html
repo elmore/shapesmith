@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Shapesmith</title>
+	<script type="text/javascript" src="lib/knockout-3.2.0.js"></script>
+</head>
+<body>
+	
+	
+	<p data-bind="text: arr().length"></p>
+	<p data-bind="text: name"></p>
+	
+	<button id="add-button">Add</button>
+	
+	<script type="text/javascript">
+	
+		var viewModel = {
+		
+			arr : ko.observableArray(),
+			name : ko.observable("start")
+		};
+	
+		document.getElementById('add-button').onclick = function() {
+			
+			viewModel.arr().push(viewModel.arr().length + 1);
+
+			viewModel.name("changed to " + viewModel.arr().length);
+			
+			console.log(viewModel.arr());
+		};
+		
+		ko.applyBindings(viewModel);
+		
+	</script>
+	
+</body>
+</html>
