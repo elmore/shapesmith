@@ -9,15 +9,21 @@
 </head>
 <body>
 	
-	 <div data-bind="page: {id: 'pageone', role: 'start'}">
+	 <div data-bind="page: {id: 'pageone', role: 'start', params: ['first','second']}">
         <h1>Page One</h1>
+		
+		<p data-bind="text: first"></p>
+		<p data-bind="text: second"></p>
     </div>
 	
-    <div data-bind="page: {id: 'pagetwo'}">
+    <div data-bind="page: {id: 'pagetwo', params: ['first','second']}">
         <h1>Page Two</h1>
+		
+		<p data-bind="text: first"></p>
+		<p data-bind="text: second"></p>
     </div>
 	
-	<a href="#/pageone">page one</a> | <a href="#/pagetwo">page two</a>
+	<a href="#/pageone?first=tom&second=top+hat">page one</a> | <a href="#/pagetwo">page two</a>
 	
 	<p data-bind="text: arr().length"></p>
 	<p data-bind="text: name"></p>
