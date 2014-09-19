@@ -3,10 +3,21 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Shapesmith</title>
+	<script type="text/javascript" src="lib/jquery-1.11.1.min.js"></script>
 	<script type="text/javascript" src="lib/knockout-3.2.0.js"></script>
+	<script type="text/javascript" src="lib/pager.min.js"></script>
 </head>
 <body>
 	
+	 <div data-bind="page: {id: 'pageone', role: 'start'}">
+        <h1>Page One</h1>
+    </div>
+	
+    <div data-bind="page: {id: 'pagetwo'}">
+        <h1>Page Two</h1>
+    </div>
+	
+	<a href="#/pageone">page one</a> | <a href="#/pagetwo">page two</a>
 	
 	<p data-bind="text: arr().length"></p>
 	<p data-bind="text: name"></p>
@@ -18,20 +29,31 @@
 		var viewModel = {
 		
 			arr : ko.observableArray(),
+			
 			name : ko.observable("start")
 		};
+		
+		pager.Href.hash = '#/';
+		
+		pager.extendWithPage(viewModel);		
+		
+		ko.applyBindings(viewModel);
+		
+		pager.start();
+		
+	</script>
+	
+	<script type="text/javascript">
 	
 		document.getElementById('add-button').onclick = function() {
 			
-			viewModel.arr().push(viewModel.arr().length + 1);
+			viewModel.arr.push(viewModel.arr().length + 1);
 
 			viewModel.name("changed to " + viewModel.arr().length);
 			
 			console.log(viewModel.arr());
 		};
-		
-		ko.applyBindings(viewModel);
-		
+    	
 	</script>
 	
 </body>
