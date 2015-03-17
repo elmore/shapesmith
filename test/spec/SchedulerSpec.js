@@ -1,8 +1,15 @@
 // SchedulerSpec.js - Tom Elmore 2014 
 
 
-it("exists", function(){
+describe("Scheduler", function() {
+	
+	it("exists", function(){
 
-	var sheduler = new Sheduler();
+		var scheduler = new Sheduler();
+		
+		expect(scheduler).not.toBeNull();
+	});
 
+	
 });
+
